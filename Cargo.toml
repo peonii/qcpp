@@ -1,0 +1,12 @@
+[package]
+name = "qcpp"
+version = "0.1.0"
+edition = "2021"
+authors = ["qtrchan"]
+description = "A C++ extension in order to include custom libs without linking"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+colored = "2.0.0"
+dirs = "2.0.2"
