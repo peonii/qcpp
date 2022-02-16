@@ -25,8 +25,8 @@ fn main() {
     for line in lines {
         if line.starts_with("%incl") {
             let lib = line.split_whitespace().nth(1).unwrap().to_string().parse::<String>().unwrap();
-            let mut lib_path = dirs::home_dir().unwrap();
-            lib_path.push("/q_libs/");
+            let mut lib_path = home::home_dir().unwrap();
+            lib_path.push("q_libs");
             lib_path.push(lib);
             lib_path.set_extension("qlib");
             println!("Adding library: {}", lib_path.to_str().unwrap().yellow());

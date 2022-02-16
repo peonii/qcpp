@@ -9,4 +9,4 @@ description = "A C++ extension in order to include custom libs without linking"
 
 [dependencies]
 colored = "2.0.0"
-dirs = "2.0.2"
+home = "0.5.3"
