@@ -6,7 +6,7 @@ fn main() {
     let args = std::env::args().collect::<Vec<String>>();
 
     if args.len() < 3 {
-        println!("{}", "Usage: qcpp <file>".yellow());
+        println!("{}", "Usage: qcpp <file to change> <output file>".yellow());
         std::process::exit(0);
     }
 
