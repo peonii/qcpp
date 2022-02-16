@@ -21,7 +21,7 @@ fn main() {
     let mut lines = contents.lines();
     let mut new_data = String::new();
 
-    println!("{}", "Compiling...".yellow());
+    println!("{}", "Replacing directives...".yellow());
     for line in lines {
         if line.starts_with("%incl") {
             let lib = line.split_whitespace().nth(1).unwrap().to_string().parse::<String>().unwrap();
