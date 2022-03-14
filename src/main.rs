@@ -18,11 +18,12 @@ fn main() {
     let mut contents = String::new();
     file.read_to_string(&mut contents).unwrap();
 
-    let mut lines = contents.lines();
+    let lines = contents.lines();
     let mut new_data = String::new();
 
     println!("{}", "Replacing directives...".yellow());
-    for line in lines {
+    for mut line in lines {
+        line = line.trim_start();
         if line.starts_with("%incl") {
             let lib = line.split_whitespace().nth(1).unwrap().to_string().parse::<String>().unwrap();
             let mut lib_path = home::home_dir().unwrap();
@@ -35,7 +36,7 @@ fn main() {
             let mut lib_contents = String::new();
             lib_file.read_to_string(&mut lib_contents).unwrap();
 
-            let mut lib_lines = lib_contents.lines();
+            let lib_lines = lib_contents.lines();
             for lib_line in lib_lines {
                 new_data.push_str(lib_line);
                 new_data.push_str("\n");
