@@ -23,7 +23,9 @@ fn main() {
 
     println!("{}", "Replacing directives...".yellow());
     for mut line in lines {
+        let mut whitespace = line;
         line = line.trim_start();
+        whitespace = whitespace.get(0..whitespace.find(line).unwrap()).unwrap();
         if line.starts_with("%incl") {
             let lib = line.split_whitespace().nth(1).unwrap().to_string().parse::<String>().unwrap();
             let mut lib_path = home::home_dir().unwrap();
@@ -38,6 +40,7 @@ fn main() {
 
             let lib_lines = lib_contents.lines();
             for lib_line in lib_lines {
+                new_data.push_str(whitespace);
                 new_data.push_str(lib_line);
                 new_data.push_str("\n");
             }
@@ -46,8 +49,10 @@ fn main() {
             new_data.push_str("\n");
         }
     }
+    new_data.push_str("\n\nCompiled with qCPP\nhttps://github.com/querterdesu/qcpp");
     println!("{}", "Compiling complete!".green());
     std::fs::File::create(&args[2]).unwrap().write_all(new_data.as_bytes()).unwrap();
     println!("{}{}", "Saved to file ".green(), args[2].white());
 
 }
+
