@@ -1,6 +1,7 @@
 use colored::*;
 use std::io::Read;
 use std::io::Write;
+use chrono;
 
 fn main() {
     let args = std::env::args().collect::<Vec<String>>();
@@ -45,11 +46,12 @@ fn main() {
                 new_data.push_str("\n");
             }
         } else {
+            new_data.push_str(whitespace);
             new_data.push_str(line);
             new_data.push_str("\n");
         }
     }
-    new_data.push_str("\n\nCompiled with qCPP\nhttps://github.com/querterdesu/qcpp");
+    new_data.push_str(format!("\n\n// Compiled with qCPP\n// https://github.com/querterdesu/qcpp\n// Compiled at: {}", chrono::offset::Local::now()).as_str());
     println!("{}", "Compiling complete!".green());
     std::fs::File::create(&args[2]).unwrap().write_all(new_data.as_bytes()).unwrap();
     println!("{}{}", "Saved to file ".green(), args[2].white());

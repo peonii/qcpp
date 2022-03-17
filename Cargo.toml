@@ -10,3 +10,4 @@ description = "A C++ extension in order to include custom libs without linking"
 [dependencies]
 colored = "2.0.0"
 home = "0.5.3"
+chrono = "0.4.0"
